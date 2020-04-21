@@ -122,6 +122,8 @@ MULTI_EP_STRINGS = NumDict({
     NAMING_LIMITED_EXTEND_E_PREFIXED: _("Extend (Limited, E-prefixed)")
 })
 
+PATT_CAP_TV_SEAARCH = re.compile(r'\[tvsearch\:(.+?)\]')
+
 
 class Quality(object):
     """

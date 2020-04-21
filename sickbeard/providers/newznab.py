@@ -33,7 +33,7 @@ from requests.compat import urljoin
 import sickbeard
 from sickbeard import logger, tvcache
 from sickbeard.bs4_parser import BS4Parser
-from sickbeard.common import cpu_presets
+from sickbeard.common import cpu_presets, PATT_CAP_TV_SEAARCH
 from sickchill.helper.common import convert_size, try_int
 from sickchill.helper.encoding import ek, ss
 from sickchill.providers.nzb.NZBProvider import NZBProvider
@@ -143,11 +143,17 @@ class NewznabProvider(NZBProvider):
     @caps.setter
     def caps(self, data):
         # Override nzb.su - tvsearch without tvdbid, with q param
-        if 'nzb.su' in self.url or '[tvsearch]' in self.name:
+        if 'nzb.su' in self.url:
             self.use_tv_search = True
             self.cap_tv_search = ''
             self._caps = True
             return
+
+        # override tvseaarch
+        if PATT_CAP_TV_SEAARCH.search(self.name) is not None:
+            self.use_tv_search = True
+            self.cap_tv_search = PATT_CAP_TV_SEAARCH.search(self.name).group(0)
+            self._caps = True
 
         elm = data.find('tv-search')
         self.use_tv_search = elm and elm.get('available') == 'yes'
