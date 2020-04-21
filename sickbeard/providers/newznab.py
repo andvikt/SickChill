@@ -143,7 +143,7 @@ class NewznabProvider(NZBProvider):
     @caps.setter
     def caps(self, data):
         # Override nzb.su - tvsearch without tvdbid, with q param
-        if 'nzb.su' in self.url:
+        if 'nzb.su' in self.url or '[tvsearch]' in self.name:
             self.use_tv_search = True
             self.cap_tv_search = ''
             self._caps = True
