@@ -326,13 +326,16 @@ class NewznabProvider(NZBProvider):
                 if mode == 'Season':
                     search_params.pop('ep', '')
 
-            if self.torznab:
-                search_params.pop('ep', '')
-                search_params.pop('season', '')
+            # if self.torznab:
+            #     search_params.pop('ep', '')
+            #     search_params.pop('season', '')
+
 
             items = []
             logger.log('Search Mode: {0}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
+                if PATT_CAP_TV_SEAARCH.search(self.name):
+                    search_string = PATT_CLEAN_SEASONS.sub('', search_string).strip()
                 if mode != 'RSS':
                     logger.log('Search string: {0}'.format
                                (search_string.decode('utf-8')), logger.DEBUG)

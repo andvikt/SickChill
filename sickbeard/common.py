@@ -123,7 +123,7 @@ MULTI_EP_STRINGS = NumDict({
 })
 
 PATT_CAP_TV_SEAARCH = re.compile(r'\[tvsearch\:(.+?)\]')
-
+PATT_CLEAN_SEASONS = re.compile(r'S[0-9]{1,2}E{0,1}[0-9]{0,2}')
 
 class Quality(object):
     """
