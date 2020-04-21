@@ -334,7 +334,7 @@ class NewznabProvider(NZBProvider):
             items = []
             logger.log('Search Mode: {0}'.format(mode), logger.DEBUG)
             for search_string in search_strings[mode]:
-                if PATT_CAP_TV_SEAARCH.search(self.name):
+                if self.torznab:
                     search_string = PATT_CLEAN_SEASONS.sub('', search_string).strip()
                 if mode != 'RSS':
                     logger.log('Search string: {0}'.format
