@@ -33,7 +33,7 @@ from requests.compat import urljoin
 import sickbeard
 from sickbeard import logger, tvcache
 from sickbeard.bs4_parser import BS4Parser
-from sickbeard.common import cpu_presets, PATT_CAP_TV_SEAARCH
+from sickbeard.common import cpu_presets, PATT_CAP_TV_SEAARCH, PATT_CLEAN_SEASONS
 from sickchill.helper.common import convert_size, try_int
 from sickchill.helper.encoding import ek, ss
 from sickchill.providers.nzb.NZBProvider import NZBProvider
